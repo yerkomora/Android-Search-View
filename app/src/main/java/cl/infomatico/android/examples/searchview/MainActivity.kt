@@ -71,6 +71,10 @@ class MainActivity : AppCompatActivity() {
     private fun handleIntent(intent: Intent?) {
         if (intent != null && Intent.ACTION_SEARCH == intent.action) {
             text = intent.getStringExtra(SearchManager.QUERY)
+
+            if (searchView.query.isEmpty())
+                searchView.setQuery(text, false)
+
             searchView.clearFocus()
         }
 
